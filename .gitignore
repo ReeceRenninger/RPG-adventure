@@ -1,0 +1,84 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
+
+# Python executable
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environments
+venv/
+env/
+*.env
+
+# IDE-specific files
+.vscode/
+.idea/
+
+# macOS metadata
+.DS_Store
+
+# Windows thumbnail cache
+Thumbs.db
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Compiled Python files
+*.pyc
+*.pyo
+*.pyd
+
+# Compiled files
+*.o
+*.lo
+*.slo
+*.la
+*.lai
+*.class
+
+# Cache files
+*.cache
+
+# Logs and databases
+*.log
+*.sqlite3
+*.db
+
+# Site folder
+site/
+
+# Compiled data
+*.data
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+*~
+
+# Secret or sensitive files
+*.secret
+*.key
+*.password
+*.token
+*.confidential
+*.private
+*.ssh/id_rsa
+*.ssh/id_rsa.pub
+*.ssh/known_hosts
