@@ -5,16 +5,15 @@ import time
 
 # delay print function
 def print_delay(text,delay):
-    for char in text:
-        print(char, end='')
+        print(text, end='', flush=True)
         time.sleep(delay)
         print()
 
-delay_time = 0.05
+delay_time = 0.5
 
 def game_intro():
     intro_text = "Welcome to the game!"
-    print_delay(intro_text, 0.05)
+    print_delay(intro_text, 0.5)
     print_delay("This is a text based adventure game where you will be given a series of choices to make.", delay_time)
     print_delay("These choices will determine the outcome of the game.", delay_time)
     print_delay("Good luck!", delay_time)
