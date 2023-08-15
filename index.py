@@ -1,11 +1,28 @@
 # Base file for the game contains the main game code
 
-print("Hello and welcome to the game!")
-print("This is a text based adventure game where you will be given a series of choices to make.")
-print("These choices will determine the outcome of the game.")
-print("Good luck!")
+# import time module to delay text, this is needed to manipulate the speed of the text
+import time
+
+# delay print function
+def print_delay(text,delay):
+    for char in text:
+        print(char, end='')
+        time.sleep(delay)
+        print()
+
+delay_time = 0.05
+
+def game_intro():
+    intro_text = "Welcome to the game!"
+    print_delay(intro_text, 0.05)
+    print_delay("This is a text based adventure game where you will be given a series of choices to make.", delay_time)
+    print_delay("These choices will determine the outcome of the game.", delay_time)
+    print_delay("Good luck!", delay_time)
+
+game_intro();
 
 # This is the first choice the player will make
+#!! continue the introduction to be more in depth and figure out if I can delay the text to be more like reading an actual story
 print("You are walking down a path and you come to a fork in the road.")
 print("Do you go left or right?")
 print("Type 'left' or 'right' and press enter to choose.")
