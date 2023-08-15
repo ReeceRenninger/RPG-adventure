@@ -2,6 +2,19 @@
 
 # import time module to delay text, this is needed to manipulate the speed of the text
 import time
+from character import Character, Items
+
+# create sample character
+
+#step One: create character and items
+player = Character("Starter Character")
+sword = Items("Sword")
+potion = Items("Health Potion")
+
+#step Two: add items to character inventory
+player.add_item(sword)
+player.add_item(potion)
+
 
 # delay print function
 def print_delay(text,delay):
