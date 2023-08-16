@@ -34,6 +34,11 @@ def game_intro():
 def main_game_logic(player):
     # game_intro();
     print_delay(f"Welcome, {player.name}!", 1)
+    print(f"You've chosen the {type(player).__name__} class. You will start with {player.health} health.")
+    if player.weapon:
+        print(f"You have a {player.weapon} equipped.")
+    else:
+        print("You have no weapon equipped.")
     print_delay(f"Your adventure is about to begin {player.name}, prepare yourself", 1)
 
     # This is the first choice the player will make

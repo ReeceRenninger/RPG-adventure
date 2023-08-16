@@ -1,25 +1,26 @@
 # base character creator
 class Character:
-    def __init__(self, name, health = 100):
+    def __init__(self, name, health=100, weapon='none'):
         self.name = name
         self.health = health
         self.inventory = []
-    
+        self.weapon = weapon
+
     def add_item(self, item):
         self.inventory.append(item)
 
         # look into other methods for possibly item breaking, expand inventory to be larger, etc.
 class Barbarian(Character):
     def __init__(self, name):
-        super().__init__(name, health = 150)
+        super().__init__(name, health = 150, weapon="Great Axe")
 
 class Paladin(Character):
     def __init__(self, name):
-        super().__init__(name, health = 120)
+        super().__init__(name, health = 120, weapon="Spiked Mace")
 
 class Ranger(Character):
     def __init__(self, name):
-        super().__init__(name, health = 100)
+        super().__init__(name, health = 100, weapon="Long Bow")
 
 def choose_character_class():
     print("Choose your class: ")
@@ -51,7 +52,10 @@ class Items:
 def main():
     player = choose_character_class()
     print(f"Welcome, {player.name}!")
-    print(f"You've chosen the {type(player).__name__} class.) class with {player.health} health.))")
-
+    print(f"You've chosen the {type(player).__name__} class. You will start with {player.health} health.")
+    if player.weapon:
+        print(f"You have a {player.weapon} equipped.")
+    else:
+        print("You have no weapon equipped.")
 if __name__ == "__main__":
     main()
