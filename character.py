@@ -1,26 +1,51 @@
+import random
+
 # base character creator
 class Character:
-    def __init__(self, name, health=100, weapon='none'):
+    def __init__(self, name, health=100, weapon=None, damage_range=(1, 4)):
         self.name = name
         self.health = health
         self.inventory = []
         self.weapon = weapon
+        self.damage_range = damage_range
 
     def add_item(self, item):
         self.inventory.append(item)
 
         # look into other methods for possibly item breaking, expand inventory to be larger, etc.
+
 class Barbarian(Character):
     def __init__(self, name):
-        super().__init__(name, health = 150, weapon="Great Axe")
+        super().__init__(name, health = 140, weapon="Great Axe", damage_range=(1, 12))
 
 class Paladin(Character):
     def __init__(self, name):
-        super().__init__(name, health = 120, weapon="Spiked Mace")
+        super().__init__(name, health = 120, weapon="Spiked Mace", damage_range=(1, 6))
 
 class Ranger(Character):
     def __init__(self, name):
-        super().__init__(name, health = 100, weapon="Long Bow")
+        super().__init__(name, health = 100, weapon="Long Bow", damage_range=(1, 8))
+
+# base item creator
+class Items:
+    def __init__(self, name):
+        self.name = name
+
+# weapon class
+class Weapon(Items):
+    def __init__(self, name, damage_range):
+
+        super().__init__(name)
+        # damage range is a tuple of min and max damage
+        self.damage_range = damage_range
+
+        def roll_damage(self):
+            # return a random value between the min and max damage that breaks down a "tuple" into two arguments to be
+            # fed into the random.randint function
+            return random.randint(*self.damage_range)
+
+       
+
 
 def choose_character_class():
     print("Choose your class: ")
@@ -40,13 +65,6 @@ def choose_character_class():
     else:
         print("Invalid choice. Please try again.")
         return choose_character_class()
-
-
-# base item creator
-class Items:
-    def __init__(self, name):
-        self.name = name
-       
 
 
 def main():

@@ -32,7 +32,7 @@ def game_intro():
     print_delay("Good luck!", delay_time)
 
 def main_game_logic(player):
-    # game_intro();
+
     print_delay(f"Welcome, {player.name}!", 1)
     print(f"You've chosen the {type(player).__name__} class. You will start with {player.health} health.")
     if player.weapon:
@@ -47,7 +47,10 @@ def main_game_logic(player):
     print("Do you go left or right?")
     print("Type 'left' or 'right' and press enter to choose.")
     pathChoice = input()
-
+    if pathChoice != "left" and pathChoice != "right":
+        print("You must choose left or right.")
+        print("Type 'left' or 'right' and press enter to choose.")
+        pathChoice = input()
     # This is the first outcome of the game
     if pathChoice == "left":
         print("You chose to go left, you see the path continue deeper into forest.")
