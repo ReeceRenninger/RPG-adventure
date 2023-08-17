@@ -5,9 +5,9 @@ class Character:
     def __init__(self, name, health=100, weapon=None, damage_range=(1, 4)):
         self.name = name
         self.health = health
-        self.inventory = []
         self.weapon = weapon
         self.damage_range = damage_range
+        self.inventory = []
 
     def add_item(self, item):
         self.inventory.append(item)

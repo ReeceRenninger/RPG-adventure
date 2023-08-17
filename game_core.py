@@ -47,10 +47,12 @@ def main_game_logic(player):
     print("Do you go left or right?")
     print("Type 'left' or 'right' and press enter to choose.")
     pathChoice = input()
-    if pathChoice != "left" and pathChoice != "right":
-        print("You must choose left or right.")
-        print("Type 'left' or 'right' and press enter to choose.")
-        pathChoice = input()
+
+    # if pathChoice != "left" or pathChoice != "right":
+    #     print("You must choose left or right.")
+    #     print("Type 'left' or 'right' and press enter to choose.")
+    #     pathChoice = input()
+
     # This is the first outcome of the game
     if pathChoice == "left":
         print("You chose to go left, you see the path continue deeper into forest.")
@@ -59,15 +61,17 @@ def main_game_logic(player):
         print("Do you go inside the house or continue down the path?")
         print("Type 'house' or 'path' and press enter to choose.")
         houseChoice = input()
-    if houseChoice == "house":
-        print("You head towards the door of the house and check if it is unlocked.")
 
-    if pathChoice == "right":
+    elif pathChoice == "right":
         print("You chose to go right, you see the path continue toward a clearing.")
         print("You see a cart flipped on its side on the path.")
         print("Do you investigate the cart or continue on the path?.")
         print("Type 'investigate' or 'path' and press enter to choose.")
         cartChoice = input()
+
+    if houseChoice == "house":
+        print("You head towards the door of the house and check if it is unlocked.")
+
 
 # indentation of this is very important or it will all break
 if __name__ == "__main__":
