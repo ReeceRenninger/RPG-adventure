@@ -2,18 +2,19 @@
 
 # import time module to delay text, this is needed to manipulate the speed of the text
 import time
-from character import Character, Items, Barbarian, Paladin, Ranger, choose_character_class
+from character import Character, Items, Weapon, Barbarian, Paladin, Ranger, choose_character_class
 
 # create sample character
 
 #step One: create character and items
 player = Character("Starter Character")
-sword = Items("Sword")
-potion = Items("Health Potion")
+# sword = Items("Sword")
+# potion = Items("Health Potion")
 
-#step Two: add items to character inventory
-player.add_item(sword)
-player.add_item(potion)
+# #step Two: add items to character inventory
+# player.add_item(sword)
+# player.add_item(potion)
+
 
 
 # delay print function
@@ -32,11 +33,13 @@ def game_intro():
     print_delay("Good luck!", delay_time)
 
 def main_game_logic(player):
+    ##!! trying to figure out to get player dmg rolls
 
     print_delay(f"Welcome, {player.name}!", 1)
     print(f"You've chosen the {type(player).__name__} class. You will start with {player.health} health.")
     if player.weapon:
         print(f"You have a {player.weapon} equipped.")
+       
     else:
         print("You have no weapon equipped.")
     print_delay(f"Your adventure is about to begin {player.name}, prepare yourself", 1)
@@ -71,12 +74,23 @@ def main_game_logic(player):
 
     if houseChoice == "house":
         print("You head towards the door of the house and check if it is unlocked.")
-
-
+        print("The door is unlocked and you enter the house.")
+        goblin_health = 5
+        print("You are immediately attacked by a goblin!")
+        print(f"You pull out your{player.weapon.name} and strike the goblin!")
+        print(f"You deal {player_damage} damage to the goblin!")
+        if player_damage >= goblin_health:
+            print("You have defeated the goblin!")
+        else: 
+            print(f"The goblin has {goblin_health} health remaining!")
 # indentation of this is very important or it will all break
 if __name__ == "__main__":
     game_intro()
 
+    #!! global player variable
     player = choose_character_class()
+
+    #!! global dmg roll for player
+    player_damage = player.weapon.roll_damage()
 
     main_game_logic(player)
