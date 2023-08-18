@@ -15,17 +15,20 @@ class Character:
         # look into other methods for possibly item breaking, expand inventory to be larger, etc.
 
 class Barbarian(Character):
-    def __init__(self, name):
+    def __init__(self, name, weapon):
         super().__init__(name, health = 140, weapon="Great Axe", damage_range=(1, 12))
+        self.weapon = weapon
 
 class Paladin(Character):
-    def __init__(self, name):
+    def __init__(self, name, weapon):
         super().__init__(name, health = 120, weapon="Spiked Mace", damage_range=(1, 6))
+        self.weapon = weapon
 
 class Ranger(Character):
-    def __init__(self, name):
+    def __init__(self, name, weapon):
         super().__init__(name, health = 100, weapon="Long Bow", damage_range=(1, 8))
-
+        self.weapon = weapon
+        
 # base item creator
 class Items:
     def __init__(self, name):
@@ -56,12 +59,13 @@ def choose_character_class():
     choice = input("Enter the number of your choice:")
     name = input("Enter your character's name: ")
 
+    #!! needed to add weapon class to the character selection to be able to run the dmg roll function on main file?
     if choice == "1":
-        return Barbarian(name)
+        return Barbarian(name, Weapon("Great Axe", (1, 12)))
     elif choice == "2":
-        return Paladin(name)
+        return Paladin(name, Weapon("Spiked Mace", (1, 6)))
     elif choice == "3":
-        return Ranger(name)
+        return Ranger(name, Weapon("Long Bow", (1, 8)))
     else:
         print("Invalid choice. Please try again.")
         return choose_character_class()
