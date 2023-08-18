@@ -5,7 +5,8 @@ class Character:
     def __init__(self, name, health=100, weapon=None, damage_range=(1, 4)):
         self.name = name
         self.health = health
-        self.weapon = weapon
+        #!! updated weapon to be none by default was weapon
+        self.weapon = None
         self.damage_range = damage_range
         self.inventory = []
 
@@ -28,7 +29,7 @@ class Ranger(Character):
     def __init__(self, name, weapon):
         super().__init__(name, health = 100, weapon="Long Bow", damage_range=(1, 8))
         self.weapon = weapon
-        
+
 # base item creator
 class Items:
     def __init__(self, name):
