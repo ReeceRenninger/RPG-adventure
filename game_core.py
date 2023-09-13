@@ -8,13 +8,6 @@ from character import Character, Items, Weapon, Barbarian, Paladin, Ranger, choo
 
 #step One: create character and items
 player = Character("Starter Character")
-# sword = Items("Sword")
-# potion = Items("Health Potion")
-
-# #step Two: add items to character inventory
-# player.add_item(sword)
-# player.add_item(potion)
-
 
 
 # delay print function
@@ -83,6 +76,7 @@ def main_game_logic(player):
             print("You have defeated the goblin!")
         else: 
             print(f"The goblin has {goblin_health} health remaining!")
+
 # indentation of this is very important or it will all break
 if __name__ == "__main__":
     game_intro()

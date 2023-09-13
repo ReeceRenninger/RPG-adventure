@@ -73,7 +73,7 @@ def choose_character_class():
             print("Invalid choice. Please try again.")
             # return choose_character_class()
 
-
+#! this is for testing purposes only to see if the character class is working properly
 def main():
     player = choose_character_class()
     print(f"Welcome, {player.name}!")
