@@ -38,7 +38,7 @@ def main_game_logic(player):
     print_delay(f"Welcome, {player.name}!", 1)
     print(f"You've chosen the {type(player).__name__} class. You will start with {player.health} health.")
     if player.weapon:
-        print(f"You have a {player.weapon} equipped.")
+        print(f"You have a {player.weapon.name} equipped.")
        
     else:
         print("You have no weapon equipped.")

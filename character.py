@@ -17,17 +17,17 @@ class Character:
 
 class Barbarian(Character):
     def __init__(self, name, weapon):
-        super().__init__(name, health = 140, weapon="Great Axe", damage_range=(1, 12))
+        super().__init__(name, health = 140, weapon=weapon, damage_range=(1, 12))
         self.weapon = weapon
 
 class Paladin(Character):
     def __init__(self, name, weapon):
-        super().__init__(name, health = 120, weapon="Spiked Mace", damage_range=(1, 6))
+        super().__init__(name, health = 120, weapon=weapon, damage_range=(1, 6))
         self.weapon = weapon
 
 class Ranger(Character):
     def __init__(self, name, weapon):
-        super().__init__(name, health = 100, weapon="Long Bow", damage_range=(1, 8))
+        super().__init__(name, health = 100, weapon=weapon, damage_range=(1, 8))
         self.weapon = weapon
 
 # base item creator
@@ -43,10 +43,10 @@ class Weapon(Items):
         # damage range is a tuple of min and max damage
         self.damage_range = damage_range
 
-        def roll_damage(self):
+    def roll_damage(self):
             # return a random value between the min and max damage that breaks down a "tuple" into two arguments to be
             # fed into the random.randint function
-            return random.randint(*self.damage_range)
+         return random.randint(*self.damage_range)
 
        
 
@@ -57,19 +57,21 @@ def choose_character_class():
     print("2. Paladin")
     print("3. Ranger")
 
-    choice = input("Enter the number of your choice:")
-    name = input("Enter your character's name: ")
+
+    while True:
+        choice = input("Enter the number of your choice:")
+        name = input("Enter your character's name: ")
 
     #!! needed to add weapon class to the character selection to be able to run the dmg roll function on main file?
-    if choice == "1":
-        return Barbarian(name, Weapon("Great Axe", (1, 12)))
-    elif choice == "2":
-        return Paladin(name, Weapon("Spiked Mace", (1, 6)))
-    elif choice == "3":
-        return Ranger(name, Weapon("Long Bow", (1, 8)))
-    else:
-        print("Invalid choice. Please try again.")
-        return choose_character_class()
+        if choice == "1":
+            return Barbarian(name, Weapon("Great Axe", (1, 12)))
+        elif choice == "2":
+            return Paladin(name, Weapon("Spiked Mace", (1, 6)))
+        elif choice == "3":
+            return Ranger(name, Weapon("Long Bow", (1, 8)))
+        else:
+            print("Invalid choice. Please try again.")
+            # return choose_character_class()
 
 
 def main():
@@ -77,7 +79,7 @@ def main():
     print(f"Welcome, {player.name}!")
     print(f"You've chosen the {type(player).__name__} class. You will start with {player.health} health.")
     if player.weapon:
-        print(f"You have a {player.weapon} equipped.")
+        print(f"You have a {player.weapon.name} equipped.")
     else:
         print("You have no weapon equipped.")
 if __name__ == "__main__":
