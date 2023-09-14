@@ -2,6 +2,7 @@
 
 # import time module to delay text, this is needed to manipulate the speed of the text
 import time
+import sys
 from character import Character, Items, Weapon, Barbarian, Paladin, Ranger, choose_character_class
 
 # create sample character
@@ -18,6 +19,14 @@ def print_delay(text,delay):
 
 delay_time = 0.5
 
+# single character delay print, https://stackoverflow.com/questions/9246076/how-to-print-one-character-at-a-time-on-one-line
+def delay_print(string):
+    for char in string:
+        sys.stdout.write(char)
+        sys.stdout.flush()
+        time.sleep(0.05) # this is the delay time between each character, change this to change the speed of the text (.05 is fast)
+
+
 def game_intro():
     intro_text = "Welcome to the game!"
     print_delay(intro_text, 0.5)
@@ -30,13 +39,13 @@ def main_game_logic(player):
 
     print_delay(f"Welcome, {player.name}!", 1)
     print(f"You've chosen the {type(player).__name__} class. You will start with {player.health} health.")
-    if player.weapon:
-        print(f"You have a {player.weapon.name} equipped.")
+    # if player.weapon:
+    #     print(f"You have a {player.weapon.name} equipped.")
        
-    else:
-        print("You have no weapon equipped.")
+    # else:
+    #     print("You have no weapon equipped.")
     print_delay(f"Your adventure is about to begin {player.name}, prepare yourself", 1)
-
+    delay_print(f"You awaken in a dark cave, you have no memory of how you got here. As you stand up, you realize there is a small light coming from a distant corner of the cave. As you begin to move toward the light, you see a {player.weapon.name} leaning against the side of the cave near the light. You pick up {player.weapon.name} and continue into the light.  As you emerge from the cave, you see a path leading into a forest. You begin to walk down the path...")
     # This is the first choice the player will make
     #!! continue the introduction to be more in depth and figure out if I can delay the text to be more like reading an actual story
     print("You are walking down a path and you come to a fork in the road.")
@@ -70,7 +79,7 @@ def main_game_logic(player):
         print("The door is unlocked and you enter the house.")
         goblin_health = 5
         print("You are immediately attacked by a goblin!")
-        print(f"You pull out your{player.weapon.name} and strike the goblin!")
+        print(f"You pull out your {player.weapon.name} and strike the goblin!")
         print(f"You deal {player_damage} damage to the goblin!")
         if player_damage >= goblin_health:
             print("You have defeated the goblin!")
