@@ -1,3 +1,4 @@
+#! /usr/bin/python3
 # Base file for the game contains the main game code
 # Ctrl + f5 to run the game
 # import time module to delay text, this is needed to manipulate the speed of the text
@@ -46,7 +47,7 @@ def main_game_logic(player):
     else:
         print("You have no weapon equipped.")
     print_delay(f"Your adventure is about to begin {player.name}, prepare yourself", 1)
-    # slow_print(f"You awaken in a dark cave, you have no memory of how you got here. As you stand up, you realize there is a small light coming from a distant corner of the cave. As you begin to move toward the light, you see a {player.weapon.name} leaning against the side of the cave near the light. You pick up {player.weapon.name} and continue into the light.  As you emerge from the cave, you see a path leading into a forest. You begin to walk down the path...")
+    slow_print(f"You awaken in a dark cave, you have no memory of how you got here. As you stand up, you realize there is a small light coming from a distant corner of the cave. As you begin to move toward the light, you see a {player.weapon.name} leaning against the side of the cave near the light. You pick up {player.weapon.name} and continue into the light.  As you emerge from the cave, you see a path leading into a forest. You begin to walk down the path...")
     # This is the first choice the player will make
     #!! continue the introduction to be more in depth and figure out if I can delay the text to be more like reading an actual story
     print_delay("You are walking down a path and you come to a fork in the road.", delay_time)
@@ -69,11 +70,26 @@ def main_game_logic(player):
         houseChoice = input()
 
     elif pathChoice == "right":
-        print_delay("You chose to go right, you see the path continue toward a clearing.", delay_time)
-        print_delay("You see a cart flipped on its side on the path.", delay_time)
+        print_delay("As you continue down the path you see a clearing off in the distance.", delay_time)
+        print_delay("As your vision turns back to the path, you see a cart flipped over.", delay_time)
         print_delay("Do you investigate the cart or continue on the path?.", delay_time)
-        print_delay("Type 'investigate' or 'path' and press enter to choose.", delay_time)
+        print_delay("Type 'investigate' or 'continue' and press enter to choose.", delay_time)
         cartChoice = input()
+
+    if cartChoice == "investigate":
+        print_delay("You chose to investigate the cart.", delay_time)
+        print_delay("You walk up to the cart and see a dead body laying next to it.", delay_time)
+        print_delay("You search the body and find a small pouch of gold.", delay_time)
+        print_delay("You turn back and start continue heading down the path.", delay_time)
+        print_delay("You come to a clearing and see a small house in the clearing.", delay_time)
+        print_delay("Do you go inside the house or continue down the path?", delay_time)
+        print_delay("Type 'house' or 'path' and press enter to choose.", delay_time)
+        houseChoice = input()
+
+    elif cartChoice == "continue":
+        print_delay("You decide to avoid the cart and continue walking.", delay_time)
+        print_delay("You come to a clearing and see a small house in the clearing.", delay_time)
+        print_delay("")
 
     if houseChoice == "house":
         print_delay("You head towards the door of the house and check if it is unlocked.", delay_time)
@@ -94,7 +110,19 @@ def main_game_logic(player):
             print_delay(f"You strike back at the goblin! Dealing {player_damage} damage!")
             if goblin_health == 0:
                 print_delay("You have defeated the goblin!")
+    
+    elif houseChoice == "path":
+        print_delay("You decide to avoid the house in the clearing and continue down the path.", delay_time)
+        print_delay("You see the path begins to narrow and enter into the forest.", delay_time)
+        print_delay("As you enter the forest you hear a rustling in the bushes.", delay_time)
+        print_delay("Do you investigate the bushes or continue deeper into the forest?", delay_time)
+        print_delay("Type 'investigate' or 'forest' and press enter to choose.", delay_time)
+        forestChoice = input()
+    
+    if forestChoice == "investigate":
 
+    elif forestChoice == "forest":
+        
 
 
 
