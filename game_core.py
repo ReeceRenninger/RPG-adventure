@@ -102,13 +102,13 @@ def main_game_logic(player):
         print_delay("Do you investigate the bushes or continue deeper into the forest?", delay_time)
         print_delay("Type 'investigate' or 'forest' and press enter to choose.", delay_time)
         forestChoice = input()
-        
+
     elif pathChoice == "right":
         print_delay("As you continue down the path you see a clearing off in the distance.", delay_time)
         print_delay("As your vision turns back to the path, you see a cart flipped over.", delay_time)
         print_delay("Do you investigate the cart or continue on the path?.", delay_time)
         print_delay("Type 'investigate' or 'continue' and press enter to choose.", delay_time)
-        cartChoice = input()
+        cartChoice = valid_user_input(["investigate", "continue"])
 
     if cartChoice == "investigate":
         print_delay("You chose to investigate the cart.", delay_time)
@@ -118,7 +118,7 @@ def main_game_logic(player):
         print_delay("You come to a clearing and see a small house in the clearing.", delay_time)
         print_delay("Do you go inside the house or continue down the path?", delay_time)
         print_delay("Type 'house' or 'path' and press enter to choose.", delay_time)
-        houseChoice = input()
+        secondHouseChoice = valid_user_input(["path", "house"]) #!! can I recycle the house choice from above or do I need to create a new one?
 
     elif cartChoice == "continue":
         print_delay("You decide to avoid the cart and continue walking.", delay_time)
