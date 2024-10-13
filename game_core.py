@@ -5,6 +5,7 @@
 import time
 import sys
 import random
+import json
 from character import Character, Items, Weapon, Barbarian, Paladin, Ranger, choose_character_class
 
 
@@ -20,6 +21,12 @@ def print_delay(text,delay):
     print()
 
 delay_time = 0.5
+
+#** Load scenarios json
+def load_scenarios(file_path="scenarios.json"):
+    with open(file_path, 'r') as f:
+        scenarios = json.load(f)
+    return scenarios
 
 #** single character delay print, https://stackoverflow.com/questions/9246076/how-to-print-one-character-at-a-time-on-one-line
 def slow_print(string):
@@ -44,8 +51,15 @@ def game_intro():
     print_delay("These choices will determine the outcome of the game.", delay_time)
     print_delay("Good luck!", delay_time)
 
+# calls the scenarios function with choices saved under scenarios.json, trying to extract 
+# information from main game file so its not so bloated
 def main_game_logic(player):
-    ##!! trying to figure out to get player dmg rolls
+    scenarios = load_scenarios() #load scenarios from json
+    play_scenario("start", player, scenarios)
+
+def play_scenario(scenario_key, play, scenarios):
+    scenario = scenarios[scenario_key] #how we grab scenarios based off player key input passed
+    print_delay(scenario["text"], delay_time)
 
     print_delay(f"Welcome, {player.name}!", 1)
     print(f"You've chosen the {type(player).__name__} class. You will start with {player.health} health.")
@@ -55,7 +69,8 @@ def main_game_logic(player):
     else:
         print("You have no weapon equipped.")
     print_delay(f"Your adventure is about to begin {player.name}, prepare yourself", 1)
-    slow_print(f"You awaken in a dark cave, you have no memory of how you got here. As you stand up, you realize there is a small light coming from a distant corner of the cave. As you begin to move toward the light, you see a {player.weapon.name} leaning against the side of the cave near the light. You pick up {player.weapon.name} and continue into the light.  As you emerge from the cave, you see a path leading into a forest. You begin to walk down the path...")
+    slow_print(f"You awaken in a dark cave, you have no memory of how you got here. As you stand up, you realize there is a small light coming from a distant corner of the cave. As you begin to move toward the light, 
+               you see your {player.weapon.name} leaning against the side of the cave near the light. You pick up {player.weapon.name} and continue into the light.  As you emerge from the cave, you see a path leading into a forest. You begin to walk down the path...")
 
     # This is the first choice the player will make
     #!! continue the introduction to be more in depth and figure out if I can delay the text to be more like reading an actual story
@@ -63,6 +78,7 @@ def main_game_logic(player):
     print_delay("Do you go left or right?", delay_time)
     print_delay("Type 'left' or 'right' and press enter to choose.", delay_time)
 
+    #! CURRENTLY ONLY BUILDING THE LEFT 
     valid_path_choices = ["left", "right"]
     pathChoice = valid_user_input(valid_path_choices)
 
@@ -127,9 +143,9 @@ def main_game_logic(player):
 
 
     
-    if forestChoice == "investigate":
+    #if forestChoice == "investigate":
 
-    elif forestChoice == "forest":
+    #elif forestChoice == "forest":
         
 
 

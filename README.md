@@ -7,3 +7,6 @@
 ## Description
 
 Intent is to build a text based RPG adventure game while I learn the fundamentals of Python.  This is a work in progress and will be updated as I learn more. 
+
+## How to Run
+Git clone this repo and run 

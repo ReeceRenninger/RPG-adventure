@@ -1,0 +1,39 @@
+{
+    "start": {
+        "text": "You come to a fork in the road. Do you go left or right?",
+        "choices": {
+            "left": "go_left",
+            "right": "go_right"
+        }
+    },
+    "go_left": {
+        "text": "You go left and see a small house. Do you enter the house or continue down the path?",
+        "choices": {
+            "house": "enter_house",
+            "path": "continue_path"
+        }
+    },
+    "go_right": {
+        "text": "You go right and find a flipped cart. Do you investigate or continue?",
+        "choices": {
+            "investigate": "investigate_cart",
+            "continue": "continue_on_right_path"
+        }
+    },
+    "enter_house": {
+        "text": "You enter the house and are attacked by a goblin!",
+        "choices": null
+    },
+    "continue_path": {
+        "text": "You continue down the path deeper into the forest.",
+        "choices": null
+    },
+    "investigate_cart": {
+        "text": "You investigate the cart and find some gold.",
+        "choices": null
+    },
+    "continue_on_right_path": {
+        "text": "You continue walking down the path.",
+        "choices": null
+    }
+}
